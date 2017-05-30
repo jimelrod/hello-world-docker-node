@@ -1,4 +1,4 @@
-// COPIED AND PASTED FROM...
+// (mostly) COPIED AND PASTED FROM...
 // https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 
 // server.js
@@ -23,15 +23,19 @@ var port = process.env.PORT || 8080;        // set our port
 var router = express.Router();              // get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
+router.get('/api', (req, res) => {
     res.json({ message: 'hooray! welcome to our api!' });   
+});
+
+router.get('/', (req, res) => {
+    res.send("Hello, world!");
 });
 
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use('/api', router);
+app.use('/', router);
 
 // START THE SERVER
 // =============================================================================
